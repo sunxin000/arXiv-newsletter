@@ -77,6 +77,7 @@ def send_mail(config):
     sender = mail_config['user']
     # password = mail_config['password']
     password = os.environ['PASSWORD']
+    print(password)
 
     query_config = config['query_config']
     query_config['sort_by'] = arxiv.SortCriterion._member_map_[query_config['sort_by']]

@@ -13,6 +13,6 @@ query_config:
     sort_order: Descending
     max_results: 10
 mail:
-    user: 203229332@qq.com
+    user: 2032293532@qq.com
     server: smtp.qq.com
     port: 465
