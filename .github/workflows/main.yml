@@ -22,27 +22,44 @@ jobs:
           python -m pip install --upgrade pip
           pip install arxiv
           pip install PyYAML
+
+      # - name: modify config
+      #   run: |
+      #     from ruamel import yaml
+      #       with open('./config.yml', encoding="utf-8") as config_file:
+      #         content = yaml.load(f, Loader=yaml.RoundTripLoader)
+      #         content['mail']['password'] =  ${{ secrets.PUSHPLUS }}
+      #         yaml.dump(content, config_file, Dumper=yaml.RoundTripDumper)
+        
+      #   shell: python 
+
+
           
       - name: run arxiv-news-letter
         run: |
           python run.py 
+        
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
           
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
+
+          
+      # - name: Get current date
+      #   id: date
+      #   run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
       
-      - name: Send mail
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.qq.com
-          server_port: 465
-          secure: true
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
-          subject: arXiv newsletter ${{ steps.date.outputs.today }}  
-          to: sunxin000@outlook.com
-          from: arXiv-bot
-          html_body: ./templates/template.html
+      # - name: Send mail
+      #   uses: dawidd6/action-send-mail@v3
+      #   with:
+      #     server_address: smtp.qq.com
+      #     server_port: 465
+      #     secure: true
+      #     username: ${{secrets.MAIL_USERNAME}}
+      #     password: ${{secrets.MAIL_PASSWORD}}
+      #     subject: arXiv newsletter ${{ steps.date.outputs.today }}  
+      #     to: sunxin000@outlook.com
+      #     from: arXiv-bot
+      #     html_body: ./templates/template.html
 
 
 

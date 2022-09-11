@@ -1,0 +1,18 @@
+recipients:
+    - recipient: sunxin000@outlook.com
+      domains:
+        - cs.LG
+        - stat.ML
+        - cs.CL
+        - cs.cv
+      keywords:
+        - (all:nlp) AND (all:unsupervised OR all:self-supervised OR all:semi-supervised)
+        - (all:relation extraction) AND (all:distant supervision OR all:distantly supervised OR representation learning OR document-level)
+query_config:
+    sort_by: LastUpdatedDate
+    sort_order: Descending
+    max_results: 10
+mail:
+    user: 203229332@qq.com
+    server: smtp.qq.com
+    port: 465
